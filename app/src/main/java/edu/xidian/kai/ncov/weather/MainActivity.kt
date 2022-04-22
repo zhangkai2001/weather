@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), TencentLocationListener{
         ){
            PackageManager.PERMISSION_GRANTED->
            {
-               Toast.makeText(this,"granted permission",Toast.LENGTH_LONG).show()
+               //Toast.makeText(this,"granted permission",Toast.LENGTH_LONG).show()
                mLocationManager.requestLocationUpdates(mLocationRequest,this, Looper.getMainLooper())
 
            }
@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity(), TencentLocationListener{
                         Log.i("weather1", weatherBean.now.text)
                         if (Code.OK === weatherBean.code) {
                             val now = weatherBean.now
+                            binding.weatherTextview.text=weatherBean.now.text
                         } else {
                             //在此查看返回数据失败的原因
                             val code: Code = weatherBean.code
@@ -123,6 +124,7 @@ class MainActivity : AppCompatActivity(), TencentLocationListener{
                         Log.i("weather1", airBean.now.aqi)
                         if (Code.OK===airBean.code){
                             val now=airBean.now
+                            binding.airTextview.text=airBean.now.category
                         }
                         else{
                             val code: Code = airBean.code
